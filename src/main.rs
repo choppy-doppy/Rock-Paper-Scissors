@@ -4,6 +4,7 @@ use rand::seq::SliceRandom;
 
 fn main() {
     println!("rock paper scissors");
+    println!("when you're done, type 'exit' to exit");
 
     loop {
 
@@ -14,6 +15,12 @@ fn main() {
         io::stdin()
             .read_line(&mut choice)
             .expect("failed to read line");
+
+        // this block will check if you typed "exit" and when you do exit the program
+        match choice.trim() {
+            "exit" => std::process::exit(0),
+            _ => {}
+        }
 
         // this will check if the input is a number and issue an integer error
         let choice:Result<i128, ParseIntError> = choice.trim().parse();
